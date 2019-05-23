@@ -1,0 +1,5 @@
+export const SET_PER_PAGE = 'SET_PER_PAGE'
+export const SET_SORT = 'SET_SORT'
+export const SET_KEYWORD = 'SET_KEYWORD'
+export const SET_KIND = 'SET_KIND'
+export const SET_CATE_ID = 'SET_CATE_ID'
