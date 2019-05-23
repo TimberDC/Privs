@@ -1,43 +1,51 @@
 export const categoryList = [
   {
-    name: 'foot',
+    name: '足交',
     id: 5048
   },
   {
-    name: 'leg',
+    name: '美腿',
     id: 4008
   },
   {
-    name: 'jiedaiyuan',
+    name: '接待员',
     id: 6942
   },
   {
-    name: 'teacher',
+    name: '教师',
     id: 1016
   },
   {
-    name: 'ol',
+    name: 'OL',
     id: 1001
   },
   {
-    name: 'hushi',
+    name: '护士',
     id: 1013
   },
   {
-    name: 'faceshooter',
+    name: '颜射',
     id: 5023
   },
   {
-    name: 'swim',
+    name: '喉奥',
+    id: 5009
+  },
+  {
+    name: '泳衣',
     id: 3008
   },
   {
-    name: 'chihan',
+    name: '痴汉',
     id: 4004
   },
   {
-    name: 'mishu',
+    name: '秘书',
     id: 1023
+  },
+  {
+    name: '空姐',
+    id: 1007
   }
 ]
 

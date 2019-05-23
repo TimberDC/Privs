@@ -1,11 +1,13 @@
 <template>
     <div class="container" @click="handleGallaryClick">
-      <div @click.stop v-for="(item, index) in newImg" :key="index">
+      <div @click.stop>
         <b-img-lazy
-          class="mt-2 mb-2"
+          class="mt-2 mb-2 large-image"
           :src=item
           fluid
           @click.stop
+          v-for="(item, index) in img"
+          :key="index"
         >
         </b-img-lazy>
       </div>
@@ -16,25 +18,15 @@
 </template>
 
 <script>
-import { getLargeImg } from 'api/detail'
-
 export default {
   name: 'Gallary',
   props: {
     img: Array
   },
-  data () {
-    return {
-      newImg: []
-    }
-  },
   methods: {
     handleGallaryClick () {
       this.$emit('close')
     }
-  },
-  mounted () {
-    this.newImg = getLargeImg(this.img)
   }
 }
 </script>
@@ -51,7 +43,9 @@ export default {
     right 0
     background #000
     max-width 100%
-    align-items center
+    text-align center
+    .large-image
+      padding 10px 0
     .closeButton
       position fixed
       width 42px

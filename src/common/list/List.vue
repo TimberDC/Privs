@@ -155,15 +155,12 @@ export default {
       margin-top 5px
       border-radius 5px
     .list-content
-      min-width 143px
+      word-wrap break-word
+      max-width 160px
       margin-top 10px
-      padding 5px 5px 5px 10px
-      display flex
-      align-items flex-start
-      flex-direction column
-      justify-content space-around
+      padding 5px
       .list-item-title
-        font-size 17px
+        font-size 18px
         font-weight bold
       .list-item-date
         color red

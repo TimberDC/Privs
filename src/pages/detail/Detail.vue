@@ -3,10 +3,11 @@
     <b-container class="desc-container" fluid>
       <b-row class="ml-md-5 ml-lg-0">
         <b-col lg="7">
-          <b-img-lazy :src=coverImg fluid></b-img-lazy>
+          <b-img-lazy :src="coverImg || ''" fluid></b-img-lazy>
         </b-col>
         <b-col class="mt-4 mt-lg-0">
           <p class="title">{{list.title}}</p>
+          <p class="date">{{list.date}}</p>
           <p class="average" v-if="list.average">评分：{{list.average}}分</p>
           <p class="time">时长：{{list.volume}}分钟</p>
           <div class="more">
@@ -40,29 +41,26 @@
         </b-col>
       </b-row>
     </b-container>
-    <b-container class="mt-lg-3" fluid>
+    <b-container class="mt-lg-3" fluid v-if="this.actor.length">
       <b-row class="ml-md-5 ml-lg-0 mb-1">
         <b-col>
           <h4>演员</h4>
         </b-col>
       </b-row>
-      <b-row class="ml-md-5 ml-lg-0">
-        <b-col>
+      <b-row class="ml-1 ml-lg-0">
+        <div class="actor-container" v-for="(item, index) in actor" :key="item.id">
           <b-img-lazy
-            class="mr-2 mb-2"
             width="80"
             thumbnail
-            src="https://via.placeholder.com/120"
+            :src="actorImg[index] || ''"
             fluid
-            v-for="item in actorID"
-            :key="item.id"
           >
           </b-img-lazy>
-
-        </b-col>
+          <p class="actor-name">{{item.name}}</p>
+        </div>
       </b-row>
     </b-container>
-    <b-container class="mt-lg-3" fluid>
+    <b-container class="mt-lg-3" fluid v-if="this.sampleImg.length">
       <b-row class="ml-md-5 ml-lg-0 mb-1">
         <b-col>
           <h4>剧照</h4>
@@ -70,12 +68,11 @@
       </b-row>
       <b-row class="ml-md-5 ml-lg-0">
         <b-col>
-          <div
-            class="exp-img-container" @click="handleImgClicked">
+          <div class="exp-img-container" @click="handleImgClicked">
             <b-img-lazy
               class="mr-2 mr-lg-4 mb-4"
               width="160"
-              :src=item
+              :src="item || ''"
               fluid
               v-for="(item, index) in sampleImg"
               :key="index"
@@ -85,7 +82,7 @@
         </b-col>
       </b-row>
     </b-container>
-    <b-container class="mt-lg-3" fluid>
+    <b-container class="mt-lg-3 mb-4" fluid>
       <b-row class="ml-md-5 ml-lg-0 mb-1">
         <b-col>
           <h4>预览</h4>
@@ -96,7 +93,7 @@
           <div style="background: black">
             <b-embed
               type="video"
-              :src=url
+              :src="url || ''"
               controls
               preload
             ></b-embed>
@@ -110,7 +107,7 @@
 
 <script>
 import Gallary from 'common/gallary/Gallary'
-import { getDetailList, getVideoUrl, getLargeImg } from 'api/detail'
+import { getDetailList, getVideoUrl, getLargeImg, getActorID, getActorImg } from 'api/detail'
 import { ERR_OK } from 'api/config'
 import { mapGetters } from 'vuex'
 
@@ -130,7 +127,9 @@ export default {
       maker: [],
       director: [],
       label: [],
-      actorID: []
+      actor: [],
+      actorID: [],
+      actorImg: []
     }
   },
   methods: {
@@ -140,13 +139,22 @@ export default {
         if (res.status === ERR_OK) {
           this.list = res.items[0]
           this.coverImg = this.list.imageURL.large
-          this.sampleImg = this.list.sampleImageURL.sample_s.image
+          if (this.list.sampleImageURL) {
+            this.sampleImg = this.list.sampleImageURL.sample_s.image
+          }
           this.genre = this.list.iteminfo.genre
           this.series = this.list.iteminfo.series
           this.maker = this.list.iteminfo.maker
           this.director = this.list.iteminfo.director
           this.label = this.list.iteminfo.label
-          this.actorID = this.list.iteminfo.actress
+          if (this.list.iteminfo.actress) {
+            this.actor = this.list.iteminfo.actress
+            this.actorID = getActorID(this.actor)
+            this.actorImg = getActorImg(this.actorID)
+          }
+        }
+        if (this.sampleImg.length) {
+          this.largeImg = getLargeImg(this.sampleImg)
         }
       })
     },
@@ -170,7 +178,6 @@ export default {
     this.detailId = this.$route.params.id
     this.getDetailInfo()
     this.url = getVideoUrl(this.detailId)
-    this.largeImg = getLargeImg(this.sampleImg)
   }
 }
 </script>
@@ -178,6 +185,15 @@ export default {
 <style lang="stylus" scoped>
   .desc-container
     margin-top 71px
+    .date
+      color red
+  .actor-container
+    width 90px
+    height 110px
+    margin 0 5px
+    text-align center
+    .actor-name
+      font-size 12px
     p
       margin-bottom 0
 </style>

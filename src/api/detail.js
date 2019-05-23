@@ -19,7 +19,32 @@ export function getDetailList(floor, cid) {
   })
 }
 
-export function getActorImg(id) {
+export function getActorID(arr) {
+  var newArray = []
+  for (let i = 0; i < arr.length; i++) {
+    newArray.push(arr[i].id)
+  }
+  return newArray
+}
+
+export function getActorImg(arr) {
+  var newArray = []
+  var actorURL = ''
+  for (let i = 0; i < arr.length; i++) {
+    getActorDetail(arr[i]).then((res) => {
+      res = res.result
+      if (!res.actress[0].imageURL) {
+        actorURL = 'https://via.placeholder.com/120'
+      } else {
+        actorURL = res.actress[0].imageURL.large
+      }
+      newArray.push(actorURL)
+    })
+  }
+  return newArray
+}
+
+function getActorDetail(id) {
   const url = 'https://api.dmm.com/affiliate/v3/ActressSearch?'
   const data = Object.assign({}, commonParamsB, {
     actress_id: id
@@ -61,7 +86,9 @@ export function getVideoUrl(cid) {
   var suji = new RegExp(/suji/)
   var mifd = new RegExp(/mifd/)
   var ipx = new RegExp(/ipx/)
-  if (cid.match(dvaj) || cid.match(ssni) || cid.match(hnd) || cid.match(jufe) || cid.match(miaa) || cid.match(suji) || cid.match(mifd) || cid.match(ipx)) {
+  var geki = new RegExp(/geki/)
+  var arm = new RegExp(/arm/)
+  if (cid.match(dvaj) || cid.match(ssni) || cid.match(hnd) || cid.match(jufe) || cid.match(miaa) || cid.match(suji) || cid.match(mifd) || cid.match(ipx) || cid.match(geki) || cid.match(arm)) {
     url = `http://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${cid}/${cid}_dmb_w.mp4`
   } else if (cid.match(xrw)) {
     var xrwCid = newCid.substring(3)
