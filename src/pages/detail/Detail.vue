@@ -90,7 +90,7 @@
           <h4>预览</h4>
         </b-col>
       </b-row>
-      <b-row class="ml-md-5 ml-lg-0 mr-lg-1">
+      <b-row class="ml-md-5 ml-lg-0 mr-lg-1" v-show="showPlayer">
         <b-col>
           <div style="background: black">
             <b-embed
@@ -118,6 +118,8 @@ export default {
   data () {
     return {
       showBigImg: false,
+      // 解决安卓播放器默认最顶层的问题
+      showPlayer: true,
       detailId: '',
       url: '',
       list: [],
@@ -162,10 +164,12 @@ export default {
     },
     handleImgClicked () {
       this.showBigImg = true
+      this.showPlayer = false
       window.scrollTo(0, 0)
     },
     handleBigImgClosed () {
       this.showBigImg = false
+      this.showPlayer = true
     }
   },
   components: {

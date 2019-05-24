@@ -5,7 +5,7 @@
 
       <b-navbar-toggle target="nav-collapse" style="border: none; outline: none"></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" is-nav>
+      <b-collapse id="nav-collapse" is-nav v-model="showCollapse">
         <!-- <b-navbar-nav class="ml-lg-4">
           <b-nav-item class="mr-lg-4" href="#/actor/a/" disabled="">A</b-nav-item>
           <b-nav-item href="#/category/c/" disabled>C</b-nav-item>
@@ -90,6 +90,8 @@ export default {
   data () {
     return {
       showCategory: true,
+      // 控制导航条展开收起
+      showCollapse: false,
       currentSort: '日期',
       currentKind: 'Video',
       currentCate: '',
@@ -109,46 +111,56 @@ export default {
       if (this.keyword.length) {
         this.setKeyword(this.keyword)
       }
+      this.showCollapse = false
     },
     // 设置类别
     clickCateItem (cate) {
       this.currentCate = cate.name
       this.saveCateToState(cate.id)
       this.$refs.cateModal.hide()
+      this.showCollapse = false
     },
     // 设置大类别
     clickVideoa () {
       this.currentKind = 'Video'
       this.saveKindToState('videoa')
+      this.showCollapse = false
     },
     clickVideoc () {
       this.currentKind = 'newactor'
       this.saveKindToState('videoc')
+      this.showCollapse = false
     },
     clickAdult () {
       this.currentKind = 'adult'
       this.saveKindToState('nikkatsu')
+      this.showCollapse = false
     },
     clickComic () {
       this.currentKind = 'comic'
       this.saveKindToState('anime')
+      this.showCollapse = false
     },
     // 设置排序
     clickDate () {
       this.currentSort = '日期'
       this.saveSortToState('date')
+      this.showCollapse = false
     },
     clickRank () {
       this.currentSort = '人气'
       this.saveSortToState('rank')
+      this.showCollapse = false
     },
     clickPrice () {
       this.currentSort = '价格'
       this.saveSortToState('price')
+      this.showCollapse = false
     },
     clickReview () {
       this.currentSort = '评价'
       this.saveSortToState('review')
+      this.showCollapse = false
     }
   },
   watch: {
