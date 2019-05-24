@@ -77,29 +77,15 @@ export function getVideoUrl(cid) {
   const secondWord = cid.substr(0, 3)
   var url = ''
   var newCid = cid.replace('00', '')
-  var dvaj = new RegExp(/dvaj/)
-  var ssni = new RegExp(/ssni/)
-  var hnd = new RegExp(/hnd/)
+  var abp = new RegExp(/abp/)
   var xrw = new RegExp(/xrw/)
-  var jufe = new RegExp(/jufe/)
-  var miaa = new RegExp(/miaa/)
-  var suji = new RegExp(/suji/)
-  var mifd = new RegExp(/mifd/)
-  var ipx = new RegExp(/ipx/)
-  var geki = new RegExp(/geki/)
-  var arm = new RegExp(/arm/)
-  var hjmo = new RegExp(/hjmo/)
-  var mide = new RegExp(/mide/)
-  var kane = new RegExp(/kane/)
-  var juy = new RegExp(/juy/)
-  var aukg = new RegExp(/aukg/)
-  if (cid.match(dvaj) || cid.match(ssni) || cid.match(hnd) || cid.match(jufe) || cid.match(miaa) || cid.match(suji) || cid.match(mifd) || cid.match(ipx) || cid.match(geki) || cid.match(arm) || cid.match(hjmo) || cid.match(mide) || cid.match(kane) || cid.match(juy) || cid.match(aukg)) {
-    url = `https://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${cid}/${cid}_dmb_w.mp4`
+  if (cid.match(abp)) {
+    url = `http://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${newCid}/${newCid}_dmb_w.mp4`
   } else if (cid.match(xrw)) {
     var xrwCid = newCid.substring(3)
-    url = `https://cc3001.dmm.co.jp/litevideo/freepv/8/84x/84${xrwCid}/84${xrwCid}_dmb_w.mp4`
+    url = `http://cc3001.dmm.co.jp/litevideo/freepv/8/84x/84${xrwCid}/84${xrwCid}_dmb_w.mp4`
   } else {
-    url = `https://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${newCid}/${newCid}_dmb_w.mp4`
+    url = `http://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${cid}/${cid}_dmb_w.mp4`
   }
   return url
 }

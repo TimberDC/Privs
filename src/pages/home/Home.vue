@@ -55,6 +55,14 @@ export default {
             this.totalCount = res.total_count
           }
         })
+      } else if (this.keyword) {
+        getHomeList(this.commonKind, this.commonSort, this.perPage, offset, this.keyword).then((res) => {
+          res = res.result
+          if (res.status === ERR_OK) {
+            this.homeList = res.items
+            this.totalCount = res.total_count
+          }
+        })
       } else {
         getHomeList(this.commonKind, this.commonSort, this.perPage, offset).then((res) => {
           res = res.result
@@ -70,6 +78,14 @@ export default {
       let jumpChangeNum = page * this.perPage - (this.perPage - 1)
       if (this.cateId) {
         getCateList(this.commonKind, this.commonSort, this.perPage, this.cateId, jumpChangeNum).then((res) => {
+          res = res.result
+          if (res.status === ERR_OK) {
+            this.homeList = res.items
+            this.totalCount = res.total_count
+          }
+        })
+      } else if (this.keyword) {
+        getHomeList(this.commonKind, this.commonSort, this.perPage, jumpChangeNum, this.keyword).then((res) => {
           res = res.result
           if (res.status === ERR_OK) {
             this.homeList = res.items
@@ -155,6 +171,15 @@ export default {
       })
     }
     if (this.cateId) {
+      getCateList(this.commonKind, this.commonSort, this.perPage, this.cateId).then((res) => {
+        res = res.result
+        if (res.status === ERR_OK) {
+          this.homeList = res.items
+          this.totalCount = res.total_count
+        }
+      })
+    }
+    if (this.keyword) {
       getCateList(this.commonKind, this.commonSort, this.perPage, this.cateId).then((res) => {
         res = res.result
         if (res.status === ERR_OK) {
