@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="light" variant="light" fixed="top">
+    <b-navbar toggleable="lg" type="light" variant="light" fixed="top" style="box-shadow: 0 3px 10px #DDDEE0;">
       <b-navbar-brand class="ml-lg-4" href="/">Privs</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse" style="border: none; outline: none"></b-navbar-toggle>

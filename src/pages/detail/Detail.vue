@@ -3,7 +3,7 @@
     <b-container class="desc-container" fluid>
       <b-row class="ml-md-5 ml-lg-0">
         <b-col lg="7">
-          <b-img-lazy :src="coverImg || ''" fluid></b-img-lazy>
+          <b-img-lazy :src="coverImg || ''" fluid style="box-shadow: 0 3px 10px rgba(0,0,0,.3);"></b-img-lazy>
         </b-col>
         <b-col class="mt-4 mt-lg-0">
           <p class="title">{{list.title}}</p>
@@ -54,6 +54,7 @@
             thumbnail
             :src="actorImg[index] || ''"
             fluid
+            style="box-shadow: 0 1px 3px rgba(0,0,0,.3);"
           >
           </b-img-lazy>
           <p class="actor-name">{{item.name}}</p>
@@ -76,6 +77,7 @@
               fluid
               v-for="(item, index) in sampleImg"
               :key="index"
+              style="box-shadow: 0 3px 10px rgba(0,0,0,.3);"
             >
             </b-img-lazy>
           </div>
@@ -193,7 +195,9 @@ export default {
     margin 0 5px
     text-align center
     .actor-name
-      font-size 12px
+      margin-top 2px
+      font-size 14px
+      font-weight bold
     p
       margin-bottom 0
 </style>

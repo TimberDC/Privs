@@ -88,7 +88,12 @@ export function getVideoUrl(cid) {
   var ipx = new RegExp(/ipx/)
   var geki = new RegExp(/geki/)
   var arm = new RegExp(/arm/)
-  if (cid.match(dvaj) || cid.match(ssni) || cid.match(hnd) || cid.match(jufe) || cid.match(miaa) || cid.match(suji) || cid.match(mifd) || cid.match(ipx) || cid.match(geki) || cid.match(arm)) {
+  var hjmo = new RegExp(/hjmo/)
+  var mide = new RegExp(/mide/)
+  var kane = new RegExp(/kane/)
+  var juy = new RegExp(/juy/)
+  var aukg = new RegExp(/aukg/)
+  if (cid.match(dvaj) || cid.match(ssni) || cid.match(hnd) || cid.match(jufe) || cid.match(miaa) || cid.match(suji) || cid.match(mifd) || cid.match(ipx) || cid.match(geki) || cid.match(arm) || cid.match(hjmo) || cid.match(mide) || cid.match(kane) || cid.match(juy) || cid.match(aukg)) {
     url = `http://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${cid}/${cid}_dmb_w.mp4`
   } else if (cid.match(xrw)) {
     var xrwCid = newCid.substring(3)

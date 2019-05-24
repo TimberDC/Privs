@@ -139,16 +139,18 @@ export default {
     flex-flow row wrap
     justify-content space-around
     margin-top 56px
+    background #EEEEEB
     .list-item
       margin 10px
       width 160px
-      border 1px solid #ccc
-      border-radius 5px
       display flex
       flex-direction column
       align-items center
       justify-content flex-start
+      border-radius 5px
       cursor pointer
+      background white
+      box-shadow 0 1px 3px rgba(0,0,0,.3);
     .list-item-img
       width 150px
       height 200px
@@ -160,8 +162,9 @@ export default {
       margin-top 10px
       padding 5px
       .list-item-title
-        font-size 18px
+        font-size 16px
         font-weight bold
+        color #D984A8
       .list-item-date
         color red
   .jump
