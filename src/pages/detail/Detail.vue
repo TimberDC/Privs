@@ -7,6 +7,7 @@
         </b-col>
         <b-col class="mt-4 mt-lg-0">
           <p class="title">{{list.title}}</p>
+          <p class="id">{{list.content_id}}</p>
           <p class="date">{{list.date}}</p>
           <p class="average" v-if="list.average">评分：{{list.average}}分</p>
           <p class="time">时长：{{list.volume}}分钟</p>

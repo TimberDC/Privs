@@ -6,11 +6,6 @@
       <b-navbar-toggle target="nav-collapse" style="border: none; outline: none"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav v-model="showCollapse">
-        <!-- <b-navbar-nav class="ml-lg-4">
-          <b-nav-item class="mr-lg-4" href="#/actor/a/" disabled="">A</b-nav-item>
-          <b-nav-item href="#/category/c/" disabled>C</b-nav-item>
-        </b-navbar-nav> -->
-        <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto" v-if="showCategory">
           <b-nav-form>
             <b-form-input
