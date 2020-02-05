@@ -40,8 +40,8 @@ export const categoryList = [
     id: 3008
   },
   {
-    name: 'Chihan',
-    id: 4004
+    name: 'Time',
+    id: 5070
   },
   {
     name: 'Mishu',
@@ -50,6 +50,10 @@ export const categoryList = [
   {
     name: 'Flight',
     id: 1007
+  },
+  {
+    name: 'Sister',
+    id: 4057
   }
 ]
 
