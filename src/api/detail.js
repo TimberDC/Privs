@@ -111,20 +111,20 @@ export function getVideoUrl(cid) {
   var nfdm = new RegExp(/nfdm/)
   var xrw = new RegExp(/xrw/)
   if (cid.match(abp) || cid.match(dpmi) || cid.match(fset) || cid.match(gets) || cid.match(gvg) || cid.match(hihl) || cid.match(hxad) || cid.match(jbs) || cid.match(tamm) || cid.match(mxgs) || cid.match(nhdtb) || cid.match(pxh) || cid.match(rctd) || cid.match(ppt) || cid.match(pym) || cid.match(star) || cid.match(pts) || cid.match(chn) || cid.match(sga) || cid.match(supa) || cid.match(sdmm) || cid.match(sw) || cid.match(vrtm) || cid.match(xv) || cid.match(t282) || cid.match(zmen) || cid.match(aka) || cid.match(nfdm)) {
-    url = `http://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${newCid}/${newCid}_dmb_w.mp4`
+    url = `http://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${newCid}/${newCid}mhb.mp4`
   } else if (cid.match(dkdn)) {
     var dkdnCid = newCid.substring(2)
-    url = `http://cc3001.dmm.co.jp/litevideo/freepv/h/h_1/h_139${dkdnCid}/h_139${dkdnCid}_dmb_w.mp4`
+    url = `http://cc3001.dmm.co.jp/litevideo/freepv/h/h_1/h_139${dkdnCid}/h_139${dkdnCid}mhb.mp4`
   } else if (cid.match(bazx)) {
     var bazxCid = newCid.substring(2)
-    url = `http://cc3001.dmm.co.jp/litevideo/freepv/8/84b/84${bazxCid}/84${bazxCid}_dmb_w.mp4`
+    url = `http://cc3001.dmm.co.jp/litevideo/freepv/8/84b/84${bazxCid}/84${bazxCid}mhb.mp4`
   } else if (cid.match(xrw)) {
     var xrwCid = newCid.substring(3)
-    url = `http://cc3001.dmm.co.jp/litevideo/freepv/8/84x/84${xrwCid}/84${xrwCid}_dmb_w.mp4`
+    url = `http://cc3001.dmm.co.jp/litevideo/freepv/8/84x/84${xrwCid}/84${xrwCid}mhb.mp4`
   } else if (cid.match(diy)) {
-    url = `http://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${diyCid}/${diyCid}_dmb_w.mp4`
+    url = `http://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${diyCid}/${diyCid}mhb.mp4`
   } else {
-    url = `http://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${cid}/${cid}_dmb_w.mp4`
+    url = `http://cc3001.dmm.co.jp/litevideo/freepv/${firstWord}/${secondWord}/${cid}/${cid}mhb.mp4`
   }
   return url
 }
